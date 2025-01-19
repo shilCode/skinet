@@ -5,7 +5,13 @@ namespace Core.Interfaces;
 
 public interface ISpecification<T>
 {
-    Expression<Func<T,bool>>? Criteria{get;}
-    Expression<Func<T, object>>? OrderBy{get; }
-    Expression<Func<T, object>>? OrderByDesc{get;}
+    Expression<Func<T, bool>>? Criteria { get; }
+    Expression<Func<T, object>>? OrderBy { get; }
+    Expression<Func<T, object>>? OrderByDesc { get; }
+    Boolean IsDistinct { get; }
+}
+
+public interface ISpecification<T, TResult> : ISpecification<T>
+{
+    Expression<Func<T, TResult>>? Select { get; }
 }
